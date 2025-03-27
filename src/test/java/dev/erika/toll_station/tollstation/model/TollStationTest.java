@@ -9,7 +9,8 @@ public class TollStationTest {
     @Test
     @DisplayName("Test para comprobar que se crea la estación de peaje con un nombre")
     public void testTollStationConstructor() {
-        TollStation tollStation = new TollStation("Autogrill");
+        TollStation tollStation = new TollStation("Autogrill", "Sagunto");
         assertEquals("Autogrill", tollStation.getName());
+        assertEquals("Sagunto", tollStation.getCity());
     }
 }
