@@ -13,7 +13,7 @@ public class CarTest {
 
         @Override
         public int calculateToll() {
-            return 50;
+            return 100;
         }
     }
 
@@ -22,6 +22,6 @@ public class CarTest {
     public void testCarConstructor() {
         Car car = new Car("1234ABC");
         assertEquals("1234ABC", car.getPlate());
-        assertEquals(50, car.calculateToll());
+        assertEquals(100, car.calculateToll());
     }
 }

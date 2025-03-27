@@ -7,6 +7,6 @@ public class Car extends Vehicle {
 
     @Override
     public int calculateToll() {
-        return 50;
+        return 100;
     }
 }
