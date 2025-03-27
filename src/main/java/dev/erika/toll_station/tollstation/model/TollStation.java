@@ -10,10 +10,12 @@ public class TollStation {
     private final String name;
     private final String city;
     private final List<Vehicle> vehicles = new ArrayList<>();
+    private int totalToll;
 
     public TollStation(String name, String city) {
         this.name = name;
         this.city = city;
+        this.totalToll = 0;
     }
 
     public String getName() {
@@ -30,5 +32,13 @@ public class TollStation {
 
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
+    }
+
+    public int collectToll(Vehicle vehicle) {
+        int toll = vehicle.calculateToll();
+        totalToll += toll;
+        addVehicle(vehicle);
+
+        return totalToll;
     }
 }
