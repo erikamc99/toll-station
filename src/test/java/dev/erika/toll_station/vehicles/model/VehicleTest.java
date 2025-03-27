@@ -12,6 +12,11 @@ public class VehicleTest {
         public TestVehicle(String plate) {
             super(plate);
         }
+
+        @Override
+        public int calculateToll() {
+            return 0;
+        }
     }
 
         @Test
