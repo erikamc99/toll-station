@@ -22,5 +22,6 @@ public class MotorbikeTest {
     public void testMotorbikeConstructor() {
         Motorbike motorbike = new Motorbike("1234ABC");
         assertEquals("1234ABC", motorbike.getPlate());
+        assertEquals(50, motorbike.calculateToll());
     }
 }
