@@ -5,12 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TruckTest {
+
+    private int axles;
+
     public class TestTruck extends Vehicle {
         public TestTruck(String plate, int axles) {
             super(plate);
         }
 
-        int axles;
 
         @Override
         public int calculateToll() {
