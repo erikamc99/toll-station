@@ -10,4 +10,6 @@ public abstract class Vehicle {
     public String getPlate() {
         return plate;
     }
+
+    public abstract int calculateToll();
 }
