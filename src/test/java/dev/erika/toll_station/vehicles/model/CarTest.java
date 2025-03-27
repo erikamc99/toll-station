@@ -22,5 +22,6 @@ public class CarTest {
     public void testCarConstructor() {
         Car car = new Car("1234ABC");
         assertEquals("1234ABC", car.getPlate());
+        assertEquals(50, car.calculateToll());
     }
 }
