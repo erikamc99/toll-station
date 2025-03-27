@@ -38,4 +38,13 @@ public class TollStationTest {
         tollStation.addVehicle(car);
         assertTrue(tollStation.getVehicles().contains(car));
     }
+
+    @Test
+    @DisplayName("Test para comprobar el cobro del peaje")
+    public void testCollectToll() {
+        Car car = new Car("1234ABC");
+        tollStation.addVehicle(car);
+        int toll = tollStation.collectToll(car);
+        assertEquals(100, toll);
+    }
 }
