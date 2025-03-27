@@ -26,12 +26,16 @@ public class ControllerTollStationTest {
     
     private Car car;
     
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        controller = new TollStationController(tollStation); 
+    }
+    
     @Test
     @DisplayName("Test que comprueba el cobro de peaje a un vehículo")
     void testCollectToll() {
-        
-        MockitoAnnotations.openMocks(this);
-        controller = new TollStationController(tollStation); 
+
         car = new Car("1234ABC");
 
         when(tollStation.collectToll(car)).thenReturn(100);
@@ -39,5 +43,24 @@ public class ControllerTollStationTest {
         ResponseEntity<?> response = controller.collectToll(car);
         
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
+    }
+
+    @Test
+    @DisplayName("Test que comprueba el reporte del peaje")
+    public void testPrintReport() {
+        car = new Car("1234ABC");
+
+        when(tollStation.getName()).thenReturn("Autogrill");
+        when(tollStation.getCity()).thenReturn("Sagunto");
+        when(tollStation.getVehicles()).thenReturn(Arrays.asList(car));
+        when(tollStation.collectToll(car)).thenReturn(100);
+
+        ResponseEntity<String> response = controller.printReport();
+
+        String report = response.getBody();
+        assertThat(report, containsString("=== Reporte de: Autogrill, Sagunto ==="));
+        assertThat(report, containsString("Vehículos atendidos:"));
+        assertThat(report, containsString("Matrícula: 1234ABC, Peaje: 100€"));
+        assertThat(report, containsString("Total recolectado: 100€"));
     }
 }
