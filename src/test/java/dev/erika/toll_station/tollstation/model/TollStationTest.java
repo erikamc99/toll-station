@@ -13,4 +13,11 @@ public class TollStationTest {
         assertEquals("Autogrill", tollStation.getName());
         assertEquals("Sagunto", tollStation.getCity());
     }
+
+    @Test
+    @DisplayName("Test para comprobar que se crea la lista de vehículos")
+    public void testVehicleList() {
+        TollStation tollStation = new TollStation("Autogrill", "Sagunto");
+        assertEquals(0, tollStation.getVehicles().size());
+    }
 }
