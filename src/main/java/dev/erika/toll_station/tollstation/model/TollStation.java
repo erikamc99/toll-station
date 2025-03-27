@@ -27,4 +27,8 @@ public class TollStation {
     public List<Vehicle> getVehicles() {
         return vehicles;
     }
+
+    public void addVehicle(Vehicle vehicle) {
+        vehicles.add(vehicle);
+    }
 }
