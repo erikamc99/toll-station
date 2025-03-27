@@ -26,4 +26,11 @@ public class TruckTest {
         Truck truck = new Truck("1234ABC", 2);
         assertEquals("1234ABC", truck.getPlate());
     }
+
+    @Test
+    @DisplayName("Test para comprobar el cálculo del peaje respecto a los ejes del camión")
+    public void testCalculateToll() {
+        Truck truck = new Truck("1234ABC", 5);
+        assertEquals(250, truck.calculateToll());
+    }
 }
