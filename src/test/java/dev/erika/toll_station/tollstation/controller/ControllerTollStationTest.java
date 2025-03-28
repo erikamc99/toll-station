@@ -31,13 +31,12 @@ public class ControllerTollStationTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         controller = new TollStationController(tollStation); 
+        car = new Car("1234ABC");
     }
     
     @Test
     @DisplayName("Test que comprueba el cobro de peaje a un vehículo")
     void testCollectToll() {
-
-        car = new Car("1234ABC");
 
         when(tollStation.collectToll(car)).thenReturn(100);
         
@@ -49,7 +48,6 @@ public class ControllerTollStationTest {
     @Test
     @DisplayName("Test que comprueba el reporte del peaje")
     public void testPrintReport() {
-        car = new Car("1234ABC");
 
         when(tollStation.getName()).thenReturn("Autogrill");
         when(tollStation.getCity()).thenReturn("Sagunto");
@@ -68,8 +66,7 @@ public class ControllerTollStationTest {
     @Test
     @DisplayName("Test que comprueba una BadRequest al cobrar peaje")
     public void testCollectTollError() {
-        car = new Car("1234ABC");
-
+        
         doThrow(new RuntimeException()).when(tollStation).collectToll(car);
 
         ResponseEntity<?> response = controller.collectToll(car);
