@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doThrow;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,5 +63,17 @@ public class ControllerTollStationTest {
         assertThat(report, containsString("Vehículos atendidos:"));
         assertThat(report, containsString("Matrícula: 1234ABC, Peaje: 100€"));
         assertThat(report, containsString("Total recolectado: 100€"));
+    }
+
+    @Test
+    @DisplayName("Test que comprueba una BadRequest al cobrar peaje")
+    public void testCollectTollError() {
+        car = new Car("1234ABC");
+
+        doThrow(new RuntimeException()).when(tollStation).collectToll(car);
+
+        ResponseEntity<?> response = controller.collectToll(car);
+
+        assertThat(response.getStatusCode(), is(HttpStatus.BAD_REQUEST));
     }
 }
