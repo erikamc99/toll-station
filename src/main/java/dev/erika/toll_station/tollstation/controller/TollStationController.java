@@ -36,11 +36,11 @@ public class TollStationController {
 
         for (Vehicle v : tollStation.getVehicles()) {
             report.append("Matrícula: ").append(v.getPlate())
-                  .append(", Peaje: ").append(v.calculateToll()).append("€\n");
+                  .append(", Peaje: ").append(v.calculateToll()).append("$\n");
         }
 
         int totalToll = tollStation.getVehicles().stream().mapToInt(Vehicle::calculateToll).sum();
-        report.append("\nTotal recolectado: ").append(totalToll).append("€");
+        report.append("\nTotal recolectado: ").append(totalToll).append("$");
 
         return ResponseEntity.ok(report.toString());
     }

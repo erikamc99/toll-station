@@ -59,8 +59,8 @@ public class ControllerTollStationTest {
         String report = response.getBody();
         assertThat(report, containsString("=== Reporte de: Autogrill, Sagunto ==="));
         assertThat(report, containsString("Vehículos atendidos:"));
-        assertThat(report, containsString("Matrícula: 1234ABC, Peaje: 100€"));
-        assertThat(report, containsString("Total recolectado: 100€"));
+        assertThat(report, containsString("Matrícula: 1234ABC, Peaje: 100$"));
+        assertThat(report, containsString("Total recolectado: 100$"));
     }
 
     @Test
